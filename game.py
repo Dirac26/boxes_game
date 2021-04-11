@@ -33,11 +33,12 @@ def game():
     window = pygame.display.set_mode((width, width))
     clock = pygame.time.Clock()
     game_on = True
-    level, p, b1, b2, b3, h1, h2, h3 = maps.get_level_1()
+    level, player, h1, h2, h3 = maps.get_level_1()
     while game_on:
         pygame.event.pump()
         pygame.time.delay(5)
         clock.tick(10)
+        player.move(level)
         re_make_window(window, level)
 
 game()
