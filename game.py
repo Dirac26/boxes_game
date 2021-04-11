@@ -1,5 +1,7 @@
 import pygame
 import maps
+import tkinter as tk
+from tkinter import messagebox
 from entities import grass, rock, hole, player, box, empty
 
 black = (0, 0, 0)
@@ -57,7 +59,8 @@ def game():
         player.move(level)
         win_con = check_when_con(level)
         if win_con:
-
+            print_message("You WON!!", "Go next")
+            raise SystemExit
         re_make_window(window, level)
 
 game()

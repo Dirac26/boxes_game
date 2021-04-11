@@ -16,9 +16,9 @@ h3 = hole(e)
 
 level_1 = [
            [grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r)], 
-           [grass(r), grass(e), grass(b1), h1, grass(r), grass(r), grass(r), grass(r)],
-           [grass(r), grass(e), grass(e), h2, h3, grass(p), grass(r), grass(r)],
-           [grass(r), grass(e), grass(e), grass(r), grass(r), grass(b3), grass(r), grass(r)],
+           [grass(r), grass(p), grass(b1), h1, grass(r), grass(r), grass(r), grass(r)],
+           [grass(r), grass(e), grass(b3), h2, h3, grass(e), grass(r), grass(r)],
+           [grass(r), grass(e), grass(e), grass(r), grass(r), grass(e), grass(r), grass(r)],
            [grass(r), grass(r), grass(e), grass(e), grass(r), grass(e), grass(e), grass(r)],
            [grass(r), grass(r), grass(b2), grass(e), grass(e), grass(e), grass(e), grass(r)],
            [grass(r), grass(r), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
