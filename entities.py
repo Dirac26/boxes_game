@@ -71,6 +71,55 @@ class player(content):
     def get_color(self):
         return red
     
+    def move(self, level):
+        dir_x, dir_y = self.get_input()
+        self.pos = self.get_position(level)
+        i = self.pos[0]
+        j = self.pos[1]
+        current = level[(i, j)]
+        next_elm = level[(i + dir_x, j + dir_y)]
+        next_ent = next_elm.content
+        next_next_elm = level[(i + 2*dir_x, j + 2*dir_y)]
+        next_next_ent = next_next_elm.content
+        if isinstance(next_ent, rock):
+            return
+        elif isinstance(next_ent, empty):
+            current.content = empty()
+            next_elm.content = self
+        elif isinstance(next_ent, box) and isinstance(next_next_ent, box):
+            return
+        elif isinstance(next_ent, box) and isinstance(next_next_ent, rock):
+            return
+        elif isinstance(next_ent, box) and isinstance(next_next_ent, empty):
+            current.content = empty()
+            next_elm.content = self
+            next_next_elm.content = box()
+
+    def get_input(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+            keys = pygame.key.get_pressed()
+            for key in keys:
+                if keys[pygame.K_LEFT]:
+                    return -1, 0
+                
+                elif keys[pygame.K_RIGHT]:
+                    return 1, 0
+
+                elif keys[pygame.K_UP]:
+                    return 0, -1
+
+                elif keys[pygame.K_DOWN]:
+                    return 0, 1
+        return 0, 0
+
+
+    def get_position(self, level):
+        for pos, ent in level.items():
+            if isinstance(ent.content, player):
+                return pos
+
     def draw(self, surf, pos, block_size):
         i = pos[0] * block_size
         j = pos[1] * block_size
