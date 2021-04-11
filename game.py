@@ -25,6 +25,22 @@ def re_make_window(surf, level):
         ent.draw(surf, pos, block_size)
     pygame.display.update()
 
+def print_message(subject, content):
+    root = tk.Tk()
+    root.attributes("-topmost", True)
+    messagebox.showinfo(subject, content)
+    try:
+        root.destroy()
+    except:
+        pass
+
+def check_when_con(level):
+    for pos, ent in level.items():
+        if isinstance(ent, hole):
+            if not isinstance(ent.content, box):
+                return False
+    return True
+
 def game():
     global width, rows, block_size
     width = 800
@@ -39,6 +55,9 @@ def game():
         pygame.time.delay(5)
         clock.tick(10)
         player.move(level)
+        win_con = check_when_con(level)
+        if win_con:
+
         re_make_window(window, level)
 
 game()
