@@ -1,66 +1,66 @@
 import pygame
 import maps
 import tkinter as tk
+import map_run
+import buttons
 from tkinter import messagebox
 from entities import grass, rock, hole, player, box, empty
 
-black = (0, 0, 0)
-which = (255, 255, 255)
-gray = (192, 192, 192)
-green = (0, 128, 0)
-brown = (150, 75, 0)
-player = (255, 255, 255)
+class Game:
+    def __init__(self, width=800):
+        self.width = width
+        self.window = pygame.display.set_mode((self.width, self.width))
+        self.clock = pygame.time.Clock()
+        self.buttons = []
+        self.maps = [maps.Map1(), maps.Map1(), maps.Map1()]
+        pygame.init()
+        for i, m in enumerate(self.maps):
+            button_width = self.width/10
+            spacing_width = self.width/20
+            self.buttons.append(buttons.Button(button_width, button_width, (1.5*i*button_width+spacing_width, spacing_width), m.get_name, m))
+        self.selected_level = self.select_level()
+        self.run_game(self.selected_level)
+        
 
-def make_grid(surf):
-    size_block = width / rows
-    x, y = 0, 0
-    for line in range(rows):
-        x += size_block
-        y += size_block
-        pygame.draw.line(surf, (255, 255, 255), (x, 0), (x, width))
-        pygame.draw.line(surf, (255, 255, 255),(0, y), (width, y))
+    def select_level(self):
+        not_selected = True
+        sel_map = None
+        while not_selected:
+            pygame.event.pump()
+            pygame.time.delay(5)
+            self.clock.tick(10)
+            for butt in self.buttons:
+                sel_map = butt.check()
+                if not sel_map:
+                    self.re_make_selection_window(self.window)
+                    continue
+                else:
+                    not_selected = False
+                    break
+        return sel_map
 
-def re_make_window(surf, level):
-    surf.fill((255, 255, 255))
-    make_grid(surf)
-    for pos, ent in level.items():
-        ent.draw(surf, pos, block_size)
-    pygame.display.update()
+    
+    def re_make_selection_window(self, surf):
+        surf.fill((255, 255, 255))
+        self.make_buttons(surf)
+        pygame.display.update()
 
-def print_message(subject, content):
-    root = tk.Tk()
-    root.attributes("-topmost", True)
-    messagebox.showinfo(subject, content)
-    try:
-        root.destroy()
-    except:
-        pass
+    def make_buttons(self, surf):
+        for butt in self.buttons:
+            butt.draw(surf)
+        
 
-def check_when_con(level):
-    for pos, ent in level.items():
-        if isinstance(ent, hole):
-            if not isinstance(ent.content, box):
-                return False
-    return True
+    def run_game(self, map_to_play):
+        map_run.RunMap(map_to_play, self.window, self.width, self.clock).run_map()
 
-def game():
-    global width, rows, block_size
-    width = 800
-    rows = 8
-    block_size = width / rows
-    window = pygame.display.set_mode((width, width))
-    clock = pygame.time.Clock()
-    game_on = True
-    level, player, h1, h2, h3 = maps.get_level_1()
-    while game_on:
-        pygame.event.pump()
-        pygame.time.delay(5)
-        clock.tick(10)
-        player.move(level)
-        win_con = check_when_con(level)
-        if win_con:
-            print_message("You WON!!", "Go next")
-            raise SystemExit
-        re_make_window(window, level)
 
-game()
+    def print_message(self, subject, content):
+        root = tk.Tk()
+        root.attributes("-topmost", True)
+        messagebox.showinfo(subject, content)
+        try:
+            root.destroy()
+        except:
+            pass
+
+game = Game()
