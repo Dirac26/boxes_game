@@ -17,7 +17,7 @@ class RunMap:
 
     def make_level_dict(self):
         level = {}
-        for j, row in enumerate(self.map.level):
+        for j, row in enumerate(self.map.get_level()):
             for i, ent in enumerate(row):
                 level[(i, j)] = ent
         return level

@@ -45,21 +45,21 @@ class Map1(Map):
 class Map2(Map):
     def __init__(self):
         self.level = [
-            [grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), hole(e), grass(r), grass(r), grass(r), grass(r)], 
-            [grass(r), grass(p), grass(box()), hole(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), hole(e), grass(r), grass(r), grass(r), grass(r)],
-            [grass(r), grass(r), grass(box()), hole(e), hole(e), grass(e), grass(r), grass(r), grass(r), grass(e), grass(e), hole(e), grass(r), grass(r), grass(r), grass(r)],
-            [grass(r), grass(e), grass(e), grass(r), grass(r), grass(e), grass(r), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
-            [grass(r), grass(r), grass(e), grass(e), grass(r), grass(e), grass(e), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
-            [grass(r), grass(r), grass(box()), grass(e), grass(e), grass(e), grass(e), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
-            [grass(r), grass(r), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
-            [grass(r), grass(r), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
-            [grass(r), grass(r), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
-            [grass(r), grass(r), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
-            [grass(r), grass(r), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
-            [grass(r), grass(r), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
-            [grass(r), grass(r), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
-            [grass(r), grass(r), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
-            [grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)]
+            [grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r)], 
+            [grass(r), grass(p), grass(e), hole(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), hole(e), grass(r), grass(r), grass(r), grass(r)],
+            [grass(r), grass(e), grass(box()), hole(e), hole(e), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), hole(e), grass(r), grass(r), grass(r), grass(r)],
+            [grass(r), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
+            [grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
+            [grass(r), grass(e), grass(box()), grass(e), grass(e), grass(e), grass(box()), grass(e), grass(e), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
+            [grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
+            [grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(box()), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
+            [grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
+            [grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
+            [grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(box()), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
+            [grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
+            [grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
+            [grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r), grass(r), grass(e), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
+            [grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r)]
     ]
     def get_name(self):
         return "level 2"
