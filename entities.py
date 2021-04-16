@@ -72,31 +72,39 @@ class player(content):
         return red
     
     def move(self, level):
-        dir_x, dir_y = self.get_input()
+        dir_x, dir_y, backward = self.get_input()
         self.pos = self.get_position(level)
         i = self.pos[0]
         j = self.pos[1]
         current = level[(i, j)]
         next_elm = level[(i + dir_x, j + dir_y)]
         next_ent = next_elm.content
+        back_elm = level[(i - dir_x, j - dir_y)]
+        back_ent = back_elm.content
         try:
             next_next_elm = level[(i + 2*dir_x, j + 2*dir_y)]
         except:
             next_next_elm = grass(rock())
         next_next_ent = next_next_elm.content
-        if isinstance(next_ent, rock):
-            return
-        elif isinstance(next_ent, empty):
-            current.content = empty()
-            next_elm.content = self
-        elif isinstance(next_ent, box) and isinstance(next_next_ent, box):
-            return
-        elif isinstance(next_ent, box) and isinstance(next_next_ent, rock):
-            return
-        elif isinstance(next_ent, box) and isinstance(next_next_ent, empty):
-            current.content = empty()
-            next_elm.content = self
-            next_next_elm.content = box()
+        if not backward:
+            if isinstance(next_ent, rock):
+                return
+            elif isinstance(next_ent, empty):
+                current.content = empty()
+                next_elm.content = self
+            elif isinstance(next_ent, box) and isinstance(next_next_ent, box):
+                return
+            elif isinstance(next_ent, box) and isinstance(next_next_ent, rock):
+                return
+            elif isinstance(next_ent, box) and isinstance(next_next_ent, empty):
+                current.content = empty()
+                next_elm.content = self
+                next_next_elm.content = box()
+        else:
+            if isinstance(back_ent, box) and isinstance(next_ent, empty):
+                current.content = box()
+                back_elm.content = empty()
+                next_elm.content = self
 
     def get_input(self):
         for event in pygame.event.get():
@@ -104,18 +112,19 @@ class player(content):
                 pygame.quit()
             keys = pygame.key.get_pressed()
             for key in keys:
+                c_key = True if keys[pygame.K_c] else False
                 if keys[pygame.K_LEFT]:
-                    return -1, 0
+                    return -1, 0, c_key
                 
                 elif keys[pygame.K_RIGHT]:
-                    return 1, 0
+                    return 1, 0, c_key
 
                 elif keys[pygame.K_UP]:
-                    return 0, -1
+                    return 0, -1, c_key
 
                 elif keys[pygame.K_DOWN]:
-                    return 0, 1
-        return 0, 0
+                    return 0, 1, c_key
+        return 0, 0, False
 
 
     def get_position(self, level):
