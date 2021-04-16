@@ -13,19 +13,14 @@ class Button:
         self.length = leng
         self.pos = pos
         self.font = pygame.font.Font('freesansbold.ttf', 20)
-        self.text = self.font.render(ret_obj.get_name(), True, pygame.Color("White"))
+        self.rect = pygame.Rect(self.pos[0], self.pos[1], self.width, self.length)
+        self.text = self.font.render(text, True, black)
         self.return_obj = ret_obj
 
     def draw(self, surf):
-        pygame.draw.rect(surf, gray, (self.pos[0], self.pos[1], self.width, self.length))
-        surf.blit(self.text, (self.pos[0], self.pos[1]))
-        self.rect = pygame.Rect(self.pos[0], self.pos[1], self.width, self.length)
+        pygame.draw.rect(surf, gray, self.rect)
+        surf.blit(self.text, (self.pos[0]+self.width/10, self.pos[1]+self.length/4))
 
-    def check(self):
-        for ev in pygame.event.get():
-            if ev.type == pygame.QUIT:
-                pygame.quit()
-            if ev.type == pygame.MOUSEBUTTONDOWN:
-                if pygame.mouse.get_pressed()[0]:
-                    if self.rect.collidepoint(self.pos[0], self.pos[1]):
-                        return self.return_obj
+    def check(self, pos):
+            if self.rect.collidepoint(pos[0], pos[1]):
+                return self.return_obj
