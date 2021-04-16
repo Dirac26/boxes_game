@@ -28,9 +28,9 @@ class Map1(Map):
     def __init__(self):
         self.level = [
             [grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r), grass(r)], 
-            [grass(r), grass(p), grass(box()), hole(e), grass(r), grass(r), grass(r), grass(r)],
-            [grass(r), grass(e), grass(box()), hole(e), hole(e), grass(e), grass(r), grass(r)],
-            [grass(r), grass(e), grass(e), grass(r), grass(r), grass(e), grass(r), grass(r)],
+            [grass(r), grass(e), grass(box()), hole(e), grass(r), grass(r), grass(r), grass(r)],
+            [grass(r), grass(e), grass(e), hole(e), hole(e), grass(p), grass(r), grass(r)],
+            [grass(r), grass(e), grass(e), grass(r), grass(r), grass(box()), grass(r), grass(r)],
             [grass(r), grass(r), grass(e), grass(e), grass(r), grass(e), grass(e), grass(r)],
             [grass(r), grass(r), grass(box()), grass(e), grass(e), grass(e), grass(e), grass(r)],
             [grass(r), grass(r), grass(e), grass(e), grass(r), grass(r), grass(r), grass(r)],
