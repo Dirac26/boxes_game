@@ -79,7 +79,10 @@ class player(content):
         current = level[(i, j)]
         next_elm = level[(i + dir_x, j + dir_y)]
         next_ent = next_elm.content
-        next_next_elm = level[(i + 2*dir_x, j + 2*dir_y)]
+        try:
+            next_next_elm = level[(i + 2*dir_x, j + 2*dir_y)]
+        except:
+            next_next_elm = grass(rock())
         next_next_ent = next_next_elm.content
         if isinstance(next_ent, rock):
             return
